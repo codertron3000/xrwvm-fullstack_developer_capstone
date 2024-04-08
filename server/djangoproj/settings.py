@@ -29,11 +29,11 @@ SECRET_KEY =\
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://judahpurcell-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/',
+    'https://judahpurcell-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
     'localhost'
 ]
 CSRF_TRUSTED_ORIGINS = [
-    'https://judahpurcell-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/',
+    'https://judahpurcell-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
 ]
 
 REST_FRAMEWORK = {
