@@ -62,8 +62,8 @@ def registration(request):
     username_exists = False
     try:
         User.objects.get(username=username)
-        unsername_exists = True
-    except:
+        username_exists = True
+    except Exception as e:
         logger.debug(f"{username} is a new user :)")
 
     if not username_exists:
@@ -78,7 +78,10 @@ def registration(request):
         data = {"userName": username, "status": "Authenticated"}
         return JsonResponse(data)
     else:
-        data = {"userName": username, "error": "A user with that name already exists"}
+        data = {
+            "userName": username,
+            "error": "A user with that name already exists"
+        }
         return JsonResponse(data)
 
 
@@ -90,7 +93,12 @@ def get_cars(request):
     car_models = CarModel.objects.select_related("car_make")
     cars = []
     for car_model in car_models:
-        cars.append({"CarModel": car_model.name, "CarMake": car_model.car_make.name})
+        cars.append(
+            {
+                "CarModel": car_model.name,
+                "CarMake": car_model.car_make.name
+            }
+        )
     return JsonResponse({"CarModels": cars})
 
 
@@ -143,13 +151,15 @@ def add_review(request):
     if not request.user.is_anonymous:
         data = json.loads(request.body)
         try:
-            response = post_review(data)
+            post_review(data)
             return JsonResponse(
                 {
                     "status": 200,
                 }
             )
-        except:
-            return JsonResponse({"status": 401, "message": "Error in posting review"})
+        except Exception as e:
+            return JsonResponse(
+                {"status": 401, "message": "Error in posting review"}
+            )
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
