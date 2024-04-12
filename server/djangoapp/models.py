@@ -21,7 +21,7 @@ class CarMake(models.Model):
 class CarModel(models.Model):
     car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)    
-    # - Type (CharField with a choices argument to provide limited choices.
+    # - Type (CharField with a choices argument to provide limited choices
     CAR_TYPES = [
         ('TRUCK', 'Truck'),
         ('SUV', 'SUV'),
