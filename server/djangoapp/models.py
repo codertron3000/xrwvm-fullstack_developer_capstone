@@ -27,6 +27,7 @@ class CarModel(models.Model):
         ('SUV', 'SUV'),
         ('HATCHBACK', 'Hatchback'),
         ('SEDAN', 'Sedan'),
+        ('WAGON', 'Wagon'),
     ]
     type = models.CharField(max_length=10, choices=CAR_TYPES, default='SUV')
     # - Year (IntegerField) with min value 2015 and max value 2023
